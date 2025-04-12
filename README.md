@@ -12,10 +12,24 @@
 7. Jika sudah masuk ke halaman Admin Drupal, lanjutkan untuk klik menu Manage > Structure > All Posts untuk melihat semua data artikel.
 
 ## Url BE (Endpoint)
-ada di folder postman/article_service_postman_collection.json, tinggal di import ke postman.
+- ada di folder postman/article_service_postman_collection.json, tinggal di import ke postman.
+- Create Article (POST)
+  http://localhost:1324/article                   || https://hazdev.smartedukasi.co.id/article
+- Get Article With Pagination (GET)
+  http://localhost:1324/article/{limit}/{offset}  || https://hazdev.smartedukasi.co.id/article/{limit}/{offset}
+- Get Article By ID (GET)
+  http://localhost:1324/article/{id}              || https://hazdev.smartedukasi.co.id/article/{id}
+- Update Article (PUT)
+  http://localhost:1324/article/{id}              || https://hazdev.smartedukasi.co.id/article/{id}
+- Delete Article (DELETE)
+  http://localhost:1324/article/{id}              || https://hazdev.smartedukasi.co.id/article/{id}
+
 
 ## Url FE
-- http://localhost:1324/article/all
-- http://localhost:1324/article/add
-- http://localhost:1324/article/edit/{id}
-- http://localhost:1324/article/preview
+- http://localhost:1324/article/all       || https://hazdev.smartedukasi.co.id/article/all
+- http://localhost:1324/article/add       || https://hazdev.smartedukasi.co.id/article/add
+- http://localhost:1324/article/edit/{id} || https://hazdev.smartedukasi.co.id/article/edit/{id}
+- http://localhost:1324/article/preview   || https://hazdev.smartedukasi.co.id/article/preview
+
+## Url Login
+- http://localhost:1324/user/login       || https://hazdev.smartedukasi.co.id/user/login
