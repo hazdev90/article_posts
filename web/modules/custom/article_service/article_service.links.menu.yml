@@ -1,0 +1,6 @@
+article_service.admin_articles:
+  title: 'Articles Posts'
+  description: 'Manage all article data from custom module'
+  route_name: article_service.frontend_all
+  parent: system.admin_structure
+  menu_name: admin

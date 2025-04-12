@@ -1,0 +1,10 @@
+name: 'Article Service'
+type: module
+description: 'Provides API endpoint for posting articles.'
+core_version_requirement: ^9
+package: Custom
+dependencies:
+  - serialization
+
+libraries:
+  - article_service/article_frontend

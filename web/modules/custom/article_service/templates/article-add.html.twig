@@ -1,0 +1,22 @@
+<div class="container mt-5">
+	<div id="formMessage" class="alert mt-3 d-none"></div>
+
+	<form id="articleAddForm">
+		<div class="mb-3">
+			<label for="title" class="form-label">Title</label>
+			<input type="text" class="form-control" id="title" name="title" required minlength="5">
+		</div>
+		<div class="mb-3">
+			<label for="content" class="form-label">Content</label>
+			<textarea class="form-control" id="content" name="content" rows="6" required style="resize: none"></textarea>
+		</div>
+		<div class="mb-3">
+			<label for="category" class="form-label">Category</label>
+			<input type="text" class="form-control" id="category" name="category" required minlength="3">
+		</div>
+		<div class="mb-3">
+			<button type="button" class="btn btn-success" id="publishBtn">Publish</button>
+			<button type="button" class="btn btn-secondary" id="draftBtn">Save as Draft</button>
+		</div>
+	</form>
+</div>

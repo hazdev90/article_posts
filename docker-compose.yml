@@ -1,0 +1,65 @@
+version: "3.1"
+services:
+  svapp:
+    image: svapp:1.0
+    stdin_open: true
+    tty: true
+    container_name: sv-app
+    restart: always
+    environment:
+      TZ: "Asia/Jakarta"
+    ports:
+      - 1324:1324
+    volumes:
+      - ./web/modules:/usr/share/nginx/html/web/modules:rw
+      - ./vendor:/usr/share/nginx/html/vendor:rw
+      - ./composer.json:/usr/share/nginx/html/composer.json:rw
+      - ./web/themes/custom/sv/:/usr/share/nginx/html/web/themes/custom/sv/:rw
+      - ./web/sites/config_kVh5wmTBfKGlt3BcJ8mZeHR2EtxVud_lYx4HFXJDzKvWGM3xD1pMg0-0BHj1WUm4zwy4lNbg9Q/sync:/usr/share/nginx/html/web/sites/config_kVh5wmTBfKGlt3BcJ8mZeHR2EtxVud_lYx4HFXJDzKvWGM3xD1pMg0-0BHj1WUm4zwy4lNbg9Q/sync:rw
+      - ./infra/config/drupal/services-local.yml:/usr/share/nginx/html/web/sites/default/services.yml:rw
+      - ./infra/config/drupal/settings-local.php:/usr/share/nginx/html/web/sites/default/settings.php:rw
+      - ./infra/config/nginx/default-local.conf:/etc/nginx/conf.d/default.conf:rw
+    networks:
+      - vpcbr
+
+  svdb:
+    image: mysql:8.0
+    container_name: sv-db
+    command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=4G --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_TCP_PORT: 3313
+    ports:
+      - 3313:3313
+    volumes:
+      - ./infra/data:/var/lib/mysql:rw
+      - /etc/hosts:/etc/hosts
+      - ./infra/config/mysql/my.cnf:/etc/my.cnf:rw
+      - ./infra/config/mysql:/etc/mysql/conf.d
+    networks:
+      - vpcbr
+
+  svpma:
+    image: phpmyadmin
+    container_name: sv-pma
+    restart: always
+    links:
+      - svdb
+    ports:
+      - 1301:80
+    environment:
+      PMA_HOST: svdb
+      PMA_PORT: 3313
+      MYSQL_ROOT_PASSWORD: 12345678
+      UPLOAD_LIMIT: 4G
+    depends_on:
+      - svdb
+    networks:
+      - vpcbr
+
+volumes:
+  appssock:
+networks:
+  vpcbr:
+    driver: bridge

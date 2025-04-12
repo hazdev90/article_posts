@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function article_service_schema()
+{
+    $schema['posts'] = [
+        'description' => 'Stores articles for microservice.',
+        'fields' => [
+            'id' => [
+                'description' => 'Primary Key: Unique post ID.',
+                'type' => 'serial',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ],
+            'title' => [
+                'description' => 'The title of the article.',
+                'type' => 'varchar',
+                'length' => 200,
+                'not null' => TRUE,
+            ],
+            'content' => [
+                'description' => 'The content of the article.',
+                'type' => 'text',
+                'not null' => TRUE,
+            ],
+            'category' => [
+                'description' => 'The category of the article.',
+                'type' => 'varchar',
+                'length' => 100,
+                'not null' => TRUE,
+            ],
+            'created_date' => [
+                'description' => 'When the article was created.',
+                'type' => 'datetime',
+                'mysql_type' => 'datetime',
+                'not null' => TRUE,
+            ],
+            'updated_date' => [
+                'description' => 'When the article was last updated.',
+                'type' => 'datetime',
+                'mysql_type' => 'datetime',
+                'not null' => TRUE,
+            ],
+            'status' => [
+                'description' => 'The status of the article.',
+                'type' => 'varchar',
+                'length' => 100,
+                'not null' => TRUE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    return $schema;
+}

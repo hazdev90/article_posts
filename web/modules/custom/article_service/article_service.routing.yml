@@ -1,0 +1,82 @@
+article_service.post_article:
+  path: '/article'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\article_service\Controller\ArticleController::createArticle'
+    _title: 'Create Article'
+  requirements:
+    _permission: 'access content'
+
+article_service.get_articles:
+  path: '/article/{limit}/{offset}'
+  methods: [GET]
+  defaults:
+    _controller: '\Drupal\article_service\Controller\ArticleController::getArticles'
+    _title: 'Get Articles'
+  requirements:
+    _permission: 'access content'
+    limit: '\d+'
+    offset: '\d+'
+
+article_service.get_article_by_id:
+  path: '/article/{id}'
+  methods: [GET]
+  defaults:
+    _controller: '\Drupal\article_service\Controller\ArticleController::getArticleById'
+    _title: 'Get Article By ID'
+  requirements:
+    _permission: 'access content'
+    id: '\d+'
+
+article_service.update_article:
+  path: '/article/{id}'
+  methods: [PUT, PATCH]
+  defaults:
+    _controller: '\Drupal\article_service\Controller\ArticleController::updateArticle'
+    _title: 'Update Article'
+  requirements:
+    _permission: 'access content'
+    id: '\d+'
+
+article_service.delete_article:
+  path: '/article/{id}'
+  methods: [DELETE]
+  defaults:
+    _controller: '\Drupal\article_service\Controller\ArticleController::deleteArticle'
+    _title: 'Delete Article'
+  requirements:
+    _permission: 'access content'
+    id: '\d+'
+
+article_service.frontend_all:
+  path: '/article/all'
+  defaults:
+    _controller: '\Drupal\article_service\Controller\FrontendController::allPosts'
+    _title: 'All Posts'
+  requirements:
+    _permission: 'access article admin'
+
+article_service.frontend_add:
+  path: '/article/add'
+  defaults:
+    _controller: '\Drupal\article_service\Controller\FrontendController::addPost'
+    _title: 'Add New Article'
+  requirements:
+    _permission: 'access article admin'
+
+article_service.frontend_edit:
+  path: '/article/edit/{id}'
+  defaults:
+    _controller: '\Drupal\article_service\Controller\FrontendController::editPost'
+    _title: 'Edit Article'
+  requirements:
+    _permission: 'access article admin'
+    id: \d+
+
+article_service.frontend_preview:
+  path: '/article/preview'
+  defaults:
+    _controller: '\Drupal\article_service\Controller\FrontendController::preview'
+    _title: 'Preview Articles'
+  requirements:
+    _permission: 'access content'

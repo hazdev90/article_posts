@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Contains article_service.module.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function article_service_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match)
+{
+    switch ($route_name) {
+        case 'help.page.article_service':
+            return t('<p>The Article Service module provides REST-style API endpoints and a custom frontend interface for managing articles.</p>');
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function article_service_theme($existing, $type, $theme, $path)
+{
+    return [
+        'article_all' => [
+            'render element' => 'elements',
+            'template' => 'article-all',
+            'path' => drupal_get_path('module', 'article_service') . '/templates',
+        ],
+        'article_add' => [
+            'render element' => 'elements',
+            'template' => 'article-add',
+            'path' => drupal_get_path('module', 'article_service') . '/templates',
+        ],
+        'article_edit' => [
+            'render element' => 'elements',
+            'template' => 'article-edit',
+            'path' => drupal_get_path('module', 'article_service') . '/templates',
+        ],
+        'article_preview' => [
+            'render element' => 'elements',
+            'template' => 'article-preview',
+            'path' => drupal_get_path('module', 'article_service') . '/templates',
+        ],
+    ];
+}
+
+function article_service_preprocess_article_edit(&$variables)
+{
+    if (isset($variables['elements']['#article_id'])) {
+        $variables['article_id'] = $variables['elements']['#article_id'];
+    }
+}
+

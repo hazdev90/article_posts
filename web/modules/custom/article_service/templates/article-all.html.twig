@@ -1,0 +1,35 @@
+<div class="container-fluid">
+	<a href="{{ path('article_service.frontend_add') }}" class="btn btn-primary mb-3">
+		<i class="fas fa-plus"></i>
+		Add New
+	</a>
+
+	<a href="{{ path('article_service.frontend_preview') }}" class="btn btn-primary mb-3">
+		Preview
+	</a>
+
+
+	<ul class="nav nav-tabs mx-0" id="articleTabs">
+		<li class="nav-item">
+			<a class="nav-link active" data-status="publish" href="#">Published</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-status="draft" href="#">Drafts</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-status="trash" href="#">Trashed</a>
+		</li>
+	</ul>
+
+	<table class="table table-striped" id="articleTable">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Category</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+</div>

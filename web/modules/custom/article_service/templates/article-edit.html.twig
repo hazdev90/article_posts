@@ -1,0 +1,22 @@
+<div class="container-fluid">
+	<div id="editMessage" class="alert mt-3 d-none"></div>
+
+	<form id="articleEditForm" data-id="{{ article_id }}">
+		<div class="mb-3">
+			<label for="edit-title" class="form-label">Title</label>
+			<input type="text" class="form-control" id="edit-title" required minlength="5">
+		</div>
+		<div class="mb-3">
+			<label for="edit-content" class="form-label">Content</label>
+			<textarea class="form-control" id="edit-content" rows="6" required style="resize: none"></textarea>
+		</div>
+		<div class="mb-3">
+			<label for="edit-category" class="form-label">Category</label>
+			<input type="text" class="form-control" id="edit-category" required minlength="3">
+		</div>
+		<div class="mb-3">
+			<button type="button" class="btn btn-success" id="edit-publish">Publish</button>
+			<button type="button" class="btn btn-secondary" id="edit-draft">Save as Draft</button>
+		</div>
+	</form>
+</div>

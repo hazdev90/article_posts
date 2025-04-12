@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "Article Service API",
+    "_postman_id": "article-service-api-id",
+    "description": "Postman Collection for Article Service using Drupal 9",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Article",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Contoh Artikel Baru\",\n  \"content\": \"Isi artikel yang lebih dari 200 karakter. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.\",\n  \"category\": \"Teknologi\",\n  \"status\": \"publish\"\n}"
+        },
+        "url": { "raw": "http://localhost:1324/article", "protocol": "http", "host": ["localhost:1324"], "path": ["article"] }
+      }
+    },
+    {
+      "name": "Get Articles (Paginated)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:1324/article/5/0",
+          "protocol": "http",
+          "host": ["localhost:1324"],
+          "path": ["article", "5", "0"]
+        }
+      }
+    },
+    {
+      "name": "Get Article by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:1324/article/1",
+          "protocol": "http",
+          "host": ["localhost:1324"],
+          "path": ["article", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Article",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Judul Baru untuk Artikel\",\n  \"content\": \"Isi artikel diperbarui dengan konten baru yang panjang dan lengkap. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.\",\n  \"category\": \"Review\",\n  \"status\": \"draft\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:1324/article/1",
+          "protocol": "http",
+          "host": ["localhost:1324"],
+          "path": ["article", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Article",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:1324/article/1",
+          "protocol": "http",
+          "host": ["localhost:1324"],
+          "path": ["article", "1"]
+        }
+      }
+    }
+  ]
+}
